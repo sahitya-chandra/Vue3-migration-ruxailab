@@ -170,9 +170,11 @@
           <v-list-item>
             <v-row dense align="center" justify="space-around">
               <v-col class="pa-0 ma-0" cols="8">
-                <v-clamp class="titleText" autoresize :max-lines="2">
-                  {{ test.testTitle }}
-                </v-clamp>
+                <text-clamp 
+                  class="titleText" 
+                  :text="test.testTitle" 
+                  :max-lines="2"
+                />
               </v-col>
               <v-col>
                 <v-progress-circular
@@ -836,21 +838,22 @@
 </template>
 
 <script>
-import ShowInfo from '@/components/organisms/ShowInfo.vue';
-import VClamp from 'vue-clamp';
-import Snackbar from '@/components/atoms/Snackbar';
-import TipButton from '@/components/atoms/TipButton';
-import Timer from '@/components/atoms/Timer';
-import AudioRecorder from '@/components/atoms/AudioRecorder';
-import AudioVisualizer from '@/components/atoms/AudioVisualizer';
-import VideoRecorder from '@/components/atoms/VideoRecorder.vue';
-import ScreenRecorder from '@/components/atoms/ScreenRecorder.vue';
+import ShowInfo from '@/components/organisms/ShowInfo.vue'
+import TextClamp from 'vue3-text-clamp'
+import Snackbar from '@/components/atoms/Snackbar'
+import TipButton from '@/components/atoms/TipButton'
+import Timer from '@/components/atoms/Timer'
+import AudioRecorder from '@/components/atoms/AudioRecorder'
+import AudioVisualizer from '@/components/atoms/AudioVisualizer'
+import VideoRecorder from '@/components/atoms/VideoRecorder.vue'
+import ScreenRecorder from '@/components/atoms/ScreenRecorder.vue'
+
 
 export default {
   components: {
     VideoRecorder,
     ShowInfo,
-    VClamp,
+    TextClamp,
     Snackbar,
     TipButton,
     Timer,

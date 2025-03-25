@@ -2,7 +2,8 @@
   <div>
     <v-dialog
       v-if="template.header"
-      v-model="dialog"
+      :value="dialog"
+      @input="$emit('update:dialog', $event)"
       max-width="80%"
       persistent
     >
