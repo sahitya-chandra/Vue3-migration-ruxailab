@@ -131,8 +131,8 @@
       {{ $t('buttons.returnToConsole') }}
     </v-btn>
 
-    <HelpButton :class="$vuetify.breakpoint.smAndDown ? 'mx-1' : 'mx-2'" />
-    <NotificationBtn v-if="user" :class="$vuetify.breakpoint.smAndDown ? 'mx-1' : 'mx-2'" />
+    <HelpButton :class="smAndDown ? 'mx-1' : 'mx-2'" />
+    <NotificationBtn v-if="user" :class="smAndDown ? 'mx-1' : 'mx-2'" />
 
     <!-- Sign-in Desktop -->
     <v-btn
@@ -253,6 +253,7 @@ import NotificationBtn from '../atoms/NotificationButton.vue'
 import HelpButton from '../atoms/HelpButton.vue'
 import UserController from '@/controllers/UserController'
 import { getAuth } from 'firebase/auth'
+import { useDisplay } from 'vuetify/lib/framework.mjs'
 
 export default {
   name: 'Toolbar',
@@ -269,7 +270,8 @@ export default {
     isManager: false,
     username: null,
     profileImage: null,
-    defaultImage: 'https://static.vecteezy.com/system/resources/previews/024/983/914/large_2x/simple-user-default-icon-free-png.png'
+    defaultImage: 'https://static.vecteezy.com/system/resources/previews/024/983/914/large_2x/simple-user-default-icon-free-png.png',
+    display: useDisplay(),
   }
   },
   computed: {
@@ -407,7 +409,10 @@ export default {
         return this.username.charAt(0).toUpperCase()
       }
       return 'U'
-    }
+    },
+    smAndDown() {
+      return this.display.smAndDown.value
+    },
   },
   watch: {
     $route: {
