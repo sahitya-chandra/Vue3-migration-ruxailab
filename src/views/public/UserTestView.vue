@@ -107,15 +107,14 @@
         </template>
 
         <v-tooltip left>
-          <template v-slot:activator="{ on, attrs }">
+          <template v-slot:activator="{ props }">
             <v-btn
+              v-bind="props"
               fab
               dark
               small
               color="#F9A826"
-              v-bind="attrs"
               @click="saveAnswer()"
-              v-on="on"
             >
               <v-icon>mdi-content-save</v-icon>
             </v-btn>
@@ -124,16 +123,15 @@
         </v-tooltip>
 
         <v-tooltip v-if="currentUserTestAnswer" left>
-          <template v-slot:activator="{ on, attrs }">
+          <template v-slot:activator="{ props }">
             <v-btn
+              v-bind="props"
               :disabled="!currentUserTestAnswer.postTestCompleted"
               class="white--text"
               fab
               small
               color="#F9A826"
-              v-bind="attrs"
               @click="dialog = true"
-              v-on="on"
             >
               <v-icon>mdi-file-move</v-icon>
             </v-btn>
@@ -142,15 +140,14 @@
         </v-tooltip>
 
         <v-tooltip v-else left>
-          <template v-slot:activator="{ on, attrs }">
+          <template v-slot:activator="{ props }">
             <v-btn
+              v-bind="props"
               class="white--text"
               fab
               small
               color="#F9A826"
-              v-bind="attrs"
               @click="dialog = true"
-              v-on="on"
             >
               <v-icon>mdi-file-move</v-icon>
             </v-btn>
@@ -242,10 +239,10 @@
                 </v-list-item-title>
               </template>
               <v-tooltip v-for="(task, i) in item.value" :key="i" right>
-                <template v-slot:activator="{ on, attrs }">
+                <template v-slot:activator="{ props }">
                   <v-list-item
+                    v-bind="props"
                     link
-                    v-bind="attrs"
                     :disabled="
                       (currentUserTestAnswer.consentCompleted &&
                         i == 0 &&
@@ -349,12 +346,11 @@
                 </v-list-item-title>
               </template>
               <v-tooltip v-for="(task, i) in item.value" :key="i" right>
-                <template v-slot:activator="{ on, attrs }">
+                <template v-slot:activator="{ props }">
                   <v-list-item
+                    v-bind="props"
                     link
-                    v-bind="attrs"
                     @click=";(taskIndex = i), startTimer()"
-                    v-on="on"
                     :disabled="
                       isTaskDisabled(i) && !currentUserTestAnswer.submitted
                     "

@@ -154,7 +154,7 @@
       class="d-flex d-lg-none" 
       @click="goTo('/signin')"
     >
-      <v-icon :size="$vuetify.breakpoint.xsOnly ? '18' : '20'">
+      <v-icon :size="iconSize">
         mdi-lock
       </v-icon>
     </v-btn>
@@ -172,26 +172,26 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-  text
-  v-bind="attrs"
-  class="pa-0 btn-fix"
-  v-on="on"
-  @click="menu = !menu"
->
-  <v-avatar size="24" class="mr-1">
-    <v-img 
-      v-if="profileImage" 
-      :src="profileImage" 
-      alt="User Profile"
-    ></v-img>
-    <v-icon v-else dark>
-      mdi-account-circle
-    </v-icon>
-  </v-avatar>
-  <v-icon small>
-    mdi-chevron-down
-  </v-icon>
-</v-btn>
+            v-bind="attrs"
+            text
+            class="pa-0 btn-fix"
+            v-on="on"
+            @click="menu = !menu"
+          >
+            <v-avatar size="24" class="mr-1">
+              <v-img 
+                v-if="profileImage" 
+                :src="profileImage" 
+                alt="User Profile"
+              ></v-img>
+              <v-icon v-else dark>
+                mdi-account-circle
+              </v-icon>
+            </v-avatar>
+            <v-icon small>
+              mdi-chevron-down
+            </v-icon>
+          </v-btn>
         </template>
 
         <div class="custom-dropdown white rounded-lg">
@@ -412,6 +412,9 @@ export default {
     },
     smAndDown() {
       return this.display.smAndDown.value
+    },
+    iconSize() {
+      return this.$vuetify?.breakpoint?.xsOnly ? '18' : '20';
     },
   },
   watch: {
