@@ -1,61 +1,78 @@
 <template>
   <v-form ref="form">
     <v-row justify="space-around">
-      <v-col class="mt-4" cols="5">
+      <v-col
+        class="mt-4"
+        cols="5"
+      >
         <v-text-field
-          v-model="task.taskName"
+          v-model="localTask.taskName"
           :label="$t('common.name')"
           :rules="requiredRule"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-textarea
-          v-model="task.taskDescription"
+          v-model="localTask.taskDescription"
           :label="$t('common.description')"
           :rules="requiredRule"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-text-field
-          v-model="task.taskTip"
+          v-model="localTask.taskTip"
           :label="$t('buttons.tip')"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
       </v-col>
       <v-col cols="5">
         <v-radio-group
-          v-model="task.taskType"
+          v-model="localTask.taskType"
           :label="$t('titles.answerType')"
           :mandatory="false"
           :rules="requiredRule"
         >
-          <v-radio :label="$t('switches.noAnswer')" value="null" />
-          <v-radio :label="$t('switches.textArea')" value="textArea" />
-          <v-radio :label="$t('switches.postTest')" value="form" />
+          <v-radio
+            :label="$t('switches.noAnswer')"
+            value="null"
+          />
+          <v-radio
+            :label="$t('switches.textArea')"
+            value="textArea"
+          />
+          <v-radio
+            :label="$t('switches.postTest')"
+            value="form"
+          />
         </v-radio-group>
         <v-text-field
-          v-if="task.taskType === 'form'"
-          v-model="task.postQuestion"
+          v-if="localTask.taskType === 'form'"
+          v-model="localTask.postQuestion"
           :label="$t('switches.postTest')"
-          outlined
-          dense
+          variant="outlined"
+          density="compact"
         />
         <v-row align="center">
           {{ $t('switches.screenRecord') }}
-          <v-switch v-model="task.hasScreenRecord" class="ml-2" />
+          <v-switch
+            v-model="localTask.hasScreenRecord"
+            class="ml-2"
+          />
         </v-row>
         <v-row align="center">
           {{ $t('switches.camera') }}
-          <v-switch v-model="task.hasCamRecord" class="ml-2" />
+          <v-switch
+            v-model="localTask.hasCamRecord"
+            class="ml-2"
+          />
         </v-row>
-        <!-- <v-row align="center"> FUTURE WORK
-          {{ $t('switches.eyeTracker') }}
-          <v-switch v-model="task.hasEye" class="ml-2" />
-        </v-row> -->
         <v-row align="center">
           {{ $t('switches.audioRecord') }}
-          <v-switch v-model="task.hasAudioRecord" class="ml-2" />
+          <v-switch
+            v-model="localTask.hasAudioRecord"
+            class="ml-2"
+          />
         </v-row>
       </v-col>
     </v-row>
@@ -70,21 +87,37 @@ export default {
       required: true,
     },
   },
+  emits: ['validate', 'update:task'],
   data() {
     return {
       requiredRule: [(v) => !!v || 'Field Required'],
-    }
+      localTask: { ...this.task }, // Local copy of the task prop
+    };
+  },
+  watch: {
+    task: {
+      handler(newTask) {
+        this.localTask = { ...newTask };
+      },
+      deep: true,
+    },
+    localTask: {
+      handler(newLocalTask) {
+        this.$emit('update:task', { ...newLocalTask });
+      },
+      deep: true,
+    },
   },
   methods: {
     valida() {
-      const valid = this.$refs.form.validate()
-      this.$emit('validate', valid)
+      const valid = this.$refs.form.validate();
+      this.$emit('validate', valid);
     },
     resetVal() {
-      this.$refs.form.resetValidation()
+      this.$refs.form.resetValidation();
     },
   },
-}
+};
 </script>
 
 <style></style>

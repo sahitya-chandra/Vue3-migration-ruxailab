@@ -2,17 +2,23 @@
   <div class="outermost">
     <v-col cols="12">
       <v-row justify="center">
-        <p class="titles ma-16">What kind of test are you looking to start?</p>
+        <p class="titles ma-16">
+          What kind of test are you looking to start?
+        </p>
       </v-row>
     </v-col>
 
-    <v-col cols="12" class="mt-6">
+    <v-col
+      cols="12"
+      class="mt-6"
+    >
       <v-row>
-        
-
-        
-
-        <v-col cols="10" md="4" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="4"
+          sm="10"
+          class="card"
+        >
           <CardTypeTest
             :img="require('../../../public/specialist.png')"
             title="Testing"
@@ -23,7 +29,12 @@
           />
         </v-col>
 
-        <v-col cols="10" md="4" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="4"
+          sm="10"
+          class="card"
+        >
           <CardTypeTest
             :img="require('../../../public/specialist.png')"
             title="Inspection"
@@ -34,7 +45,12 @@
           />
         </v-col>
 
-        <v-col cols="10" md="4" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="4"
+          sm="10"
+          class="card"
+        >
           <CardTypeTest
             :img="require('../../../public/specialist.png')"
             title="Inquiry"

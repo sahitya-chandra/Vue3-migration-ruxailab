@@ -8,20 +8,37 @@
       </v-row>
     </v-col>
 
-    <v-col cols="12" class="mt-6">
+    <v-col
+      cols="12"
+      class="mt-6"
+    >
       <v-row>
-        <v-col cols="10" md="5" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="5"
+          sm="10"
+          class="card"
+        >
           <CardTypeTest
             :img="require('../../../public/specialist.png')"
             title="Usability Heuristic"
             type="Test"
             segund-type="HEURISTICS"
-            :texts="['Usability Percentage', 'Final Report PDF', 'Invite specialists to evaluate your application']"
-            @click="setTestType"
+            :texts="[
+              'Usability Percentage',
+              'Final Report PDF',
+              'Invite specialists to evaluate your application'
+            ]"
+            @click="() => setTestType('HEURISTICS')"
           />
         </v-col>
 
-        <v-col cols="10" md="5" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="5"
+          sm="10"
+          class="card"
+        >
           <div class="inactive-card">
             <CardTypeTest
               :img="require('../../../public/user.png')"
@@ -34,7 +51,12 @@
           </div>
         </v-col>
 
-        <v-col cols="10" md="5" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="5"
+          sm="10"
+          class="card"
+        >
           <div class="inactive-card">
             <CardTypeTest
               :img="require('../../../public/specialist.png')"
@@ -47,14 +69,21 @@
           </div>
         </v-col>
 
-        <v-col cols="10" md="5" sm="10" class="card">
+        <v-col
+          cols="10"
+          md="5"
+          sm="10"
+          class="card"
+        >
           <div class="inactive-card">
             <CardTypeTest
               :img="require('../../../public/user.png')"
               title="Automated Evaluation"
               type="Test"
               segund-type="AUTOMATED"
-              :texts="['Use of tools to verify accessibility or detect errors']"
+              :texts="[
+                'Use of tools to verify accessibility or detect errors'
+              ]"
               :disabled="true"
             />
           </div>
@@ -62,14 +91,14 @@
       </v-row>
     </v-col>
 
-     <CreateTestNameDialog
+    <CreateTestNameDialog
       :is-open="nameDialog"
       :test-type="testType"
       :heading="$t('TestDialog.heading')"
-      :subHeading="$t('TestDialog.sub-heading')"
-      :testName="$t('TestDialog.test-name')"
-      :testDescription="$t('TestDialog.test-description')"
-      :testLabel="$t('TestDialog.test-label')"
+      :sub-heading="$t('TestDialog.sub-heading')"
+      :test-name="$t('TestDialog.test-name')"
+      :test-description="$t('TestDialog.test-description')"
+      :test-label="$t('TestDialog.test-label')"
       @close="nameDialog = false"
     />
   </div>
@@ -118,15 +147,15 @@ export default {
 .cards-container {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap; /* Ensures all cards stay in one row */
+  flex-wrap: nowrap;
   max-width: 100%;
 }
 
 .card {
-  flex: 1 1 23%; /* Ensures four cards in a row */
+  flex: 1 1 23%;
   display: flex;
   flex-direction: column;
-  padding: 0.1rem; 
+  padding: 0.1rem;
   overflow: hidden;
   word-wrap: break-word;
 }
@@ -145,7 +174,6 @@ export default {
   max-width: 90%;
 }
 
-/* Adjust for smaller screens */
 @media (max-width: 1264px) {
   .card {
     flex: 1 1 32%;
@@ -155,9 +183,9 @@ export default {
 
 @media (max-width: 1360px) {
   .cards-container {
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
-  
+
   .card {
     flex: 1 1 45%;
   }
@@ -168,5 +196,4 @@ export default {
     flex: 1 1 100%;
   }
 }
-
 </style>

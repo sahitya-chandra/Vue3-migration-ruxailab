@@ -1,13 +1,15 @@
 <template>
-  <v-dialog v-model="dialog" width="500">
-    <template v-slot:activator="{ on }">
+  <v-dialog
+    v-model="dialog"
+    width="500"
+  >
+    <template #activator="{ props }">
       <v-btn
         color="green"
-        class="ml-4 my-2 mr-auto white--text"
+        class="ml-4 my-2 mr-auto text-white"
         variant="tonal"
-        depressed
         icon
-        v-on="on"
+        v-bind="props"
       >
         <v-icon>mdi-chat-question</v-icon>
       </v-btn>
@@ -15,14 +17,17 @@
 
     <v-card>
       <v-card-title
-        class="headline orange lighten-1 text-center"
+        class="text-h5 bg-orange-lighten-1 text-center"
         style="color: white;"
         primary-title
       >
         {{ task.taskName }} - TIP
       </v-card-title>
 
-      <v-card-text class="pa-3" style="text-align: center; color: black;">
+      <v-card-text
+        class="pa-3"
+        style="text-align: center; color: black;"
+      >
         {{ task.taskTip }}
       </v-card-text>
 
@@ -30,7 +35,11 @@
 
       <v-card-actions>
         <v-spacer />
-        <v-btn color="orange" text @click="dialog = false">
+        <v-btn
+          color="orange"
+          variant="text"
+          @click="dialog = false"
+        >
           Ok
         </v-btn>
       </v-card-actions>

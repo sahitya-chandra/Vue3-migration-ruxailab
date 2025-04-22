@@ -1,7 +1,7 @@
 <template>
   <v-tabs
     v-if="type == 'tabs'"
-    background-color="transparent"
+    bg-color="transparent"
     color="#FCA326"
     class="pb-0 mb-0"
   >
@@ -19,8 +19,15 @@
     </v-tab>
   </v-tabs>
 
-  <v-col v-else-if="type == 'content'" cols="12">
-    <v-card rounded="xxl" v-if="index == 0" style="background: #f5f7ff">
+  <v-col
+    v-else-if="type == 'content'"
+    cols="12"
+  >
+    <v-card
+      v-if="index == 0"
+      rounded="xxl"
+      style="background: #f5f7ff"
+    >
       <v-card-title class="subtitleView">
         {{ $t('UserTestTable.titles.consentForm') }}
       </v-card-title>
@@ -33,7 +40,11 @@
       </v-row>
     </v-card>
 
-    <v-card rounded="xxl" v-if="index == 1" style="background: #f5f7ff">
+    <v-card
+      v-if="index == 1"
+      rounded="xxl"
+      style="background: #f5f7ff"
+    >
       <v-card-title class="subtitleView">
         {{ $t('UserTestTable.titles.userVariables') }}
       </v-card-title>
@@ -52,7 +63,11 @@
       @input="updateData"
     />
 
-    <v-card rounded="xxl" v-if="index == 3" style="background: #f5f7ff">
+    <v-card
+      v-if="index == 3"
+      rounded="xxl"
+      style="background: #f5f7ff"
+    >
       <v-card-title class="subtitleView">
         {{ $t('UserTestTable.titles.postForm') }}
       </v-card-title>
@@ -94,6 +109,7 @@ export default {
       default: () => {},
     },
   },
+  emits: ['tabClicked'],
   data() {
     return {
       formData: {

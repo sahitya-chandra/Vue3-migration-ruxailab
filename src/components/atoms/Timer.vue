@@ -1,13 +1,13 @@
 <template>
   <div class="mr-auto">
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
+    <v-tooltip location="bottom">
+      <template #activator="{ props }">
         <v-icon
-          @click="toggleTimer"
           class="ml-4 mr-2 my-4"
           style="cursor: pointer"
-          v-bind="attrs"
-          v-on="on"
+          v-bind="props"
+         
+          @click="toggleTimer"
         >
           {{ timerRunning ? 'mdi-clock' : 'mdi-clock-outline' }}
         </v-icon>
@@ -26,6 +26,7 @@ export default {
       required: true,
     },
   },
+  emits: ['timerStopped'],
   data() {
     return {
       timerRunning: false,

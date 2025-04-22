@@ -8,9 +8,18 @@
       {{ $t('pages.createTest.title') }}
     </span>
 
-    <v-row justify="center" style="padding: 0px 30px;">
-      <v-row style="max-width: 90%" justify="center">
-        <v-col cols="12" md="6">
+    <v-row
+      justify="center"
+      style="padding: 0px 30px;"
+    >
+      <v-row
+        style="max-width: 90%"
+        justify="center"
+      >
+        <v-col
+          cols="12"
+          md="6"
+        >
           <v-card
             hover
             class="card"
@@ -18,14 +27,21 @@
             @click="$router.push('/choose')"
           >
             <v-row align="center">
-              <v-col cols="12" md="5">
+              <v-col
+                cols="12"
+                md="5"
+              >
                 <v-img
-                  contain
-                  src="@/assets/createView/blankCanvas.svg"
+                  cover
+                  :src="require('@/assets/createView/blankCanvas.svg')"
                   max-height="200"
                 />
               </v-col>
-              <v-col cols="12" md="6" class="card-text">
+              <v-col
+                cols="12"
+                md="6"
+                class="card-text"
+              >
                 <div class="card-title">
                   {{ $t('pages.createTest.blankTitle') }}
                 </div>
@@ -36,7 +52,10 @@
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+        >
           <v-card
             hover
             class="card"
@@ -44,14 +63,21 @@
             @click="pushToFromTemplate()"
           >
             <v-row align="center">
-              <v-col cols="12" md="5">
+              <v-col
+                cols="12"
+                md="5"
+              >
                 <v-img
-                  contain
-                  src="@/assets/createView/createFromTemplate.svg"
+                  cover
+                  :src="require('@/assets/createView/createFromTemplate.svg')"
                   max-height="200"
                 />
               </v-col>
-              <v-col cols="12" md="6" class="card-text-box">
+              <v-col
+                cols="12"
+                md="6"
+                class="card-text-box"
+              >
                 <div class="card-title">
                   {{ $t('pages.createTest.templateTitle') }}
                 </div>

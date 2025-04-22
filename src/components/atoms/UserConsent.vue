@@ -5,7 +5,7 @@
         <v-textarea
           v-model="consent"
           rows="3"
-          outlined
+          variant="outlined"
           color="orange"
           class="mx-6 mt-3"
           placeholder="Consent Form..."
