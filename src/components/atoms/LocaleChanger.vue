@@ -5,8 +5,8 @@
   >
     <!-- Desktop -->
     <v-select
-      :model-value="lang" 
-      class="pt-7 hidden-sm-and-down" 
+      :model-value="lang"
+      class="pt-7 hidden-sm-and-down"
       prepend-inner-icon="mdi-translate"
       :items="languages"
       item-title="label"
@@ -44,7 +44,7 @@
             v-for="(item, index) in languages"
             :key="index"
             link
-            @click="updateLang(item.value)" 
+            @click="updateLang(item.value)"
           >
             <v-list-item-title>{{ item.label }}</v-list-item-title>
           </v-list-item>
@@ -54,43 +54,37 @@
   </v-col>
 </template>
 
-<script>
-import { mapActions, mapGetters } from 'vuex';
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { useI18n } from 'vue-i18n';
 
-export default {
-  data() {
-    return {
-      languages: [
-        { label: 'English', value: 'en' },
-        { label: 'Español', value: 'es' },
-        { label: 'Português', value: 'pt_br' },
-        { label: 'हिन्दी', value: 'hi'},
-        { label: 'Deutsch' , value:'de'},
-        { label: 'Français', value: 'fr' },
-        { label: '中文', value: 'zh' },
-        { label: 'العربية', value: 'ar' },
-        { label: 'Русский', value: 'ru' },
-        { label: '日本語', value: 'ja' }
-      ],
-    };
-  },
+const store = useStore();
+const { t, locale } = useI18n();
 
-  computed: {
-    ...mapGetters('Language', ['lang']),
-  },
-  mounted() {
-    this.$i18n.locale = this.lang;
-  },
-  methods: {
+const languages = ref([
+  { label: 'English', value: 'en' },
+  { label: 'Español', value: 'es' },
+  { label: 'Português', value: 'pt_br' },
+  { label: 'हिन्दी', value: 'hi' },
+  { label: 'Deutsch', value: 'de' },
+  { label: 'Français', value: 'fr' },
+  { label: '中文', value: 'zh' },
+  { label: 'العربية', value: 'ar' },
+  { label: 'Русский', value: 'ru' },
+  { label: '日本語', value: 'ja' },
+]);
 
-    ...mapActions('Language', ['setLang']), 
+const lang = computed(() => store.getters['Language/lang']);
 
-    updateLang(newLang) {
-      this.setLang(newLang);
-      this.$i18n.locale = newLang; 
-    },
-  },
+const updateLang = (newLang) => {
+  store.dispatch('Language/setLang', newLang);
+  locale.value = newLang;
 };
+
+onMounted(() => {
+  locale.value = lang.value;
+});
 </script>
 
 <style>

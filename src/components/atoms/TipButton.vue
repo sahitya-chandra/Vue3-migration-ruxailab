@@ -47,21 +47,18 @@
   </v-dialog>
 </template>
 
-<script>
-export default {
-  // Fix default prop handling in task object
-  props: {
-    task: {
-      type: Object,
-      default: () => ({
-        taskName: '',
-        taskTip: '',
-      }),
-    },
-  },
+<script setup>
+import { ref } from 'vue'
 
-  data: () => ({
-    dialog: false,
-  }),
-}
+const props = defineProps({
+  task: {
+    type: Object,
+    default: () => ({
+      taskName: '',
+      taskTip: '',
+    }),
+  },
+})
+
+const dialog = ref(false)
 </script>
