@@ -212,6 +212,10 @@ const deleteItem = (i) => {
 }
 
 const saveNewItem = () => {
+  if (!Array.isArray(items.value)) {
+    items.value = []
+  }
+
   if (newItem.value.trim() !== '') {
     items.value.push({
       answer: '',
@@ -249,11 +253,8 @@ const saveState = () => {
 }
 
 const getVariables = () => {
-  if (test.value.testStructure.preTest) {
-    items.value = test.value.testStructure.preTest
-  } else if (preTest.value) {
-    items.value = preTest.value
-  }
+  const data = test.value?.testStructure?.preTest || preTest.value || []
+  items.value = Array.isArray(data) ? [...data] : []
 }
 
 onMounted(() => {
