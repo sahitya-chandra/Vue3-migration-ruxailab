@@ -1,9 +1,13 @@
 <template>
   <v-card class="cards">
     <v-col cols="12">
-      <p class="cardsTitle ml-3">{{ title }}</p>
-      <p class="cardsSubtitle ml-3">{{ subtitle }}</p>
-      <slot></slot>
+      <p class="cardsTitle ml-3">
+        {{ title }}
+      </p>
+      <p class="cardsSubtitle ml-3">
+        {{ subtitle }}
+      </p>
+      <slot />
     </v-col>
   </v-card>
 </template>

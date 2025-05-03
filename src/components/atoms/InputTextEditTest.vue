@@ -4,7 +4,7 @@
       <v-text-field
         v-if="type === 'textField'"
         v-model="internalValue"
-        outlined
+        variant="outlined"
         color="orange"
         class="mx-3"
         :label="label"
@@ -15,7 +15,7 @@
         v-else
         v-model="internalValue"
         :rows="rows"
-        outlined
+        variant="outlined"
         color="orange"
         class="mx-3"
         :label="label"
@@ -51,6 +51,8 @@ export default {
       require: false,
     },
   },
+
+  emits: ['change', 'input'],
 
   computed: {
     internalValue: {
