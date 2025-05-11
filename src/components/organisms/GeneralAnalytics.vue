@@ -155,14 +155,15 @@
             <v-row>
               <span class="bottomCardsTitle mb-1 mt-7 ml-11">Latest user answer</span>
               <v-avatar
-                color="grey-lighten-1"
+                color="grey"
                 class="ml-10 mt-4"
                 size="45"
               >
                 <v-icon
                   size="42"
-                >
-                  mdi-account-circle
+                  color="white"
+                  icon="mdi-account-circle"
+                > 
                 </v-icon>
               </v-avatar>
               <span
@@ -365,14 +366,15 @@
             <v-row>
               <span class="bottomCardsTitle mb-1 mt-7 ml-11">Latest user answer</span>
               <v-avatar
-                color="grey-lighten-1"
+                color="grey"
                 class="ml-10 mt-4"
                 size="45"
               >
                 <v-icon
                   size="42"
+                  color="white"
+                  icon="mdi-account-circle"
                 >
-                  mdi-account-circle
                 </v-icon>
               </v-avatar>
               <span
@@ -437,11 +439,11 @@ const taskAnswers = ref([]);
 const intro = ref(null);
 const dataHeaders = ref([
   {
-    text: 'Email',
+    title: 'Email',
     value: 'userDocId',
   },
   {
-    text: 'Actions',
+    title: 'Actions',
     sortable: false,
     value: 'actions',
   },
