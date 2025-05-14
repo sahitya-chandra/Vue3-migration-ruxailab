@@ -7,7 +7,7 @@
       <p class="cardsSubtitle ml-3">
         {{ subtitle }}
       </p>
-      <slot></slot>
+      <slot />
     </v-col>
   </v-card>
 </template>
