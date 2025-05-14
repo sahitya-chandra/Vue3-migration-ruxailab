@@ -92,7 +92,12 @@
       </v-card>
     </v-dialog>
 
-    <v-container class="ma-0 pa-0" width="auto" height="100vh" style="background-color: #e8eaf2;">
+    <v-container
+      class="ma-0 pa-0"
+      width="auto"
+      height="100vh"
+      style="background-color: #e8eaf2;"
+    >
       <!-- Start Screen -->
       <v-row
         v-if="test && start"
@@ -312,14 +317,12 @@
                 v-if="mini"
                 color="white"
                 icon="mdi-chevron-right"
-              > 
-              </v-icon>
+              />
               <v-icon
                 v-else
                 color="white"
                 icon="mdi-chevron-left"
-              >  
-              </v-icon>
+              />
             </v-btn>
           </div>
         </v-navigation-drawer>
@@ -429,7 +432,10 @@
                   </v-radio-group>
                 </v-col>
               </v-row>
-              <v-row justify="center" class="pb-4">
+              <v-row
+                justify="center"
+                class="pb-4"
+              >
                 <v-col class="mx-10">
                   <v-btn
                     block
@@ -654,7 +660,10 @@
                   </v-radio-group>
                 </v-col>
               </v-row>
-              <v-row justify="center" class="pb-4">
+              <v-row
+                justify="center"
+                class="pb-4"
+              >
                 <v-col class="mx-10">
                   <v-btn
                     block
@@ -724,7 +733,8 @@
       </v-row>
     </v-container>
     <!-- Floating Action Button -->
-    <v-btn v-if="showSaveBtn && localTestAnswer && !start"
+    <v-btn
+      v-if="showSaveBtn && localTestAnswer && !start"
       position="fixed"
       location="bottom right"
       icon

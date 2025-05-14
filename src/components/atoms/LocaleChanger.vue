@@ -17,7 +17,6 @@
       density="compact"
       @update:model-value="updateLang"
     />
-
     <!-- Mobile -->
     <div
       class="hidden-md-and-up mr-1"
@@ -46,7 +45,11 @@
             link
             @click="updateLang(item.value)"
           >
-            <v-list-item-title>{{ item.label }}</v-list-item-title>
+            <v-list-item-title class="hindi-fix">
+              {{
+                item.label
+              }}
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>

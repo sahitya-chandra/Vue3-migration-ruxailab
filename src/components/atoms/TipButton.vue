@@ -48,17 +48,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
+  value: {
+    type: Boolean,
+    default: false
+  },
   task: {
     type: Object,
     default: () => ({
-      taskName: '',
-      taskTip: '',
+      taskName: 'Task',
+      taskTip: 'No tip available'
     }),
-  },
+    validator: (task) => {
+      return typeof task.taskName === 'string' && 
+             typeof task.taskTip === 'string'
+    }
+  }
 })
 
+const emit = defineEmits(['input'])
+
 const dialog = ref(false)
+
+watch(() => dialog.value, (newVal) => {
+  emit('input', newVal)
+})
+
+watch(() => props.value, (newVal) => {
+  dialog.value = newVal
+}, { immediate: true })
 </script>

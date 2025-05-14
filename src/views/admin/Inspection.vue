@@ -123,7 +123,8 @@ const setTestType = (type) => {
   min-height: 93vh;
   height: auto;
   background-color: #f9f5f0;
-  padding-bottom: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .titles {
@@ -134,56 +135,65 @@ const setTestType = (type) => {
   margin: 0 auto;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  max-width: 100%;
-}
-
 .card {
   flex: 1 1 23%;
   display: flex;
   flex-direction: column;
-  padding: 0.1rem;
+  padding: 0.5rem;
   overflow: hidden;
   word-wrap: break-word;
 }
 
-.card-content {
-  display: flex;
-  flex-direction: column;
-}
+/* Media Queries para Responsividade */
 
-.card-content p {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  font-size: 10px;
-  width: 100%;
-  max-width: 90%;
+/* Telas pequenas (≤ 600px) */
+@media (max-width: 600px) {
+  .outermost {
+    padding: 0.5rem;
+  }
+
+  .titles {
+    font-size: clamp(20px, 5vw, 28px);
+    margin: 1rem 0;
+  }
 }
 
 @media (max-width: 1264px) {
   .card {
-    flex: 1 1 32%;
+    padding: 0.25rem;
     margin-bottom: 1rem;
   }
 }
 
-@media (max-width: 1360px) {
-  .cards-container {
-    flex-wrap: wrap;
+/* Tablets (601px - 960px) */
+@media (min-width: 601px) and (max-width: 960px) {
+  .outermost {
+    padding: 1rem;
+  }
+
+  .titles {
+    font-size: clamp(24px, 5vw, 32px);
   }
 
   .card {
-    flex: 1 1 45%;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 }
 
-@media (max-width: 1000px) {
+/* Desktop (961px e acima) */
+@media (min-width: 961px) {
+  .outermost {
+    padding: 2rem;
+  }
+
+  .titles {
+    font-size: clamp(32px, 5vw, 38px);
+  }
+
   .card {
-    flex: 1 1 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
   }
 }
 </style>

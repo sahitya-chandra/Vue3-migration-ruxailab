@@ -80,7 +80,14 @@
         {{ item.postQuestion || '-' }}
       </template>
       <!-- Edit and Delete Icons -->
-      <template #item.actions="{ item }">
+      <template #[`item.actions`]="{ item }">
+        <v-icon
+          size="small"
+          class="mr-2"
+          @click="editItem(item)"
+        >
+          mdi-pencil
+        </v-icon>
         <v-icon
           size="small"
           @click="deleteItem(item)"
@@ -157,14 +164,14 @@ const deleteItem = (item) => {
 const addTask = (newTask) => {
   if (editedIndex.value > -1) {
     Object.assign(props.tasks[editedIndex.value], newTask);
+    editedIndex.value = -1;
     emit('change');
   } else {
-    store.dispatch('addItemsTasks', newTask).then(() => {});
-    allTasks.value = Object.assign(
-      store.getters.tasks,
-      store.state.Tests.Test.testStructure.userTasks
-    );
+    store.dispatch('addItemsTasks', newTask).then(() => {
+      setAllTasks();
+    });
   }
+
   task.value = {
     taskName: '',
     taskDescription: null,
@@ -175,6 +182,7 @@ const addTask = (newTask) => {
     hasScreenRecord: false,
     hasCamRecord: false,
   };
+  dialog.value = false;
 };
 
 const setAllTasks = () => {
@@ -197,6 +205,7 @@ onMounted(() => {
   setAllTasks();
 });
 </script>
+
 
 <style scoped>
 .subtitleView {

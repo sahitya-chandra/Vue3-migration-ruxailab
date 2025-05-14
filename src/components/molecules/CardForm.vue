@@ -7,7 +7,7 @@
       <p class="cardsSubtitle ml-3">
         {{ subtitle }}
       </p>
-      <slot />
+      <slot></slot>
     </v-col>
   </v-card>
 </template>
@@ -17,14 +17,13 @@ export default {
   props: {
     title: {
       type: String,
-      defualt: '',
-      require: true,
+      default: '',     // ✅ Corrected from 'defualt'
+      required: true,  // ✅ Corrected from 'require'
     },
-
     subtitle: {
       type: String,
-      defualt: '',
-      require: false ,
+      default: '',     // ✅ Corrected from 'defualt'
+      required: false, // ✅ Corrected from 'require'
     },
   },
 }

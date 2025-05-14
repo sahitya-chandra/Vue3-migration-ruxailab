@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 93vh; background-color: #f9f5f0;">
+  <div class="page-container">
     <v-col cols="12" />
     <span
       class="Title mb-14 mt-8"
@@ -10,7 +10,7 @@
 
     <v-row
       justify="center"
-      style="padding: 0px 30px;"
+      class="responsive-row"
     >
       <v-row
         style="max-width: 90%"
@@ -161,7 +161,12 @@ const validate = () => {
 </script>
 
 <style scoped>
-.dialog-title {
+.page-container {
+  height: 93vh;
+  background-color: #f9f5f0; /* fundo padrão para desktop/tablet */
+}
+
+dialog-title {
   font-style: normal;
   font-weight: 300;
   font-size: 60px;
@@ -181,6 +186,9 @@ const validate = () => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.responsive-row {
+  padding: 0px 30px;
+}
 .card {
   border-radius: 20px;
   padding: 30px;
@@ -189,10 +197,10 @@ const validate = () => {
 .card-title {
   font-size: 25px;
   color: #f9a826;
-  margin: 0px 0px 10px 0px;
+  margin: 0 0 10px 0;
 }
 .card-text-box {
-  margin: 0px 0px 0px 30px;
+  margin: 0 0 0 30px;
 }
 
 @media screen and (max-width: 960px) {
@@ -202,10 +210,33 @@ const validate = () => {
     justify-content: center;
   }
   .card-text-box {
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0 0 0;
   }
   .card {
     height: auto;
+  }
+}
+
+/* Responsividade para dispositivos móveis (até 600px) */
+@media screen and (max-width: 600px) {
+  .page-container {
+    background-color: #ffffff; 
+  }
+  .responsive-row {
+    padding: 0px 10px !important;
+  }
+  .Title {
+    font-size: 28px;
+  }
+  .card {
+    padding: 20px;
+    height: auto;
+  }
+  .card-title {
+    font-size: 20px;
+  }
+  .card-text-box {
+    margin: 10px 0 0 0;
   }
 }
 </style>
